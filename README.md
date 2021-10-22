@@ -1,24 +1,48 @@
-# README
+# GitHub Auth on Rails
+This Rails application has no functionality other than allowing a user to authenticate using GitHub or create an account with an email.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Gettings Started
+To get the app running for the first time you'll need to create an OAuth application in GitHub, setup the env variables, install the gems, initialize the database and then start the server.
 
-Things you may want to cover:
+### Create an OAuth application in GitHub
+Go to you GitHub settings and in the side go down to developer settings. From that page you can go to the OAuth application tab and create a new OAuth app.
 
-* Ruby version
+GitHub will for your applications **Homepage URL** and a **Authorization callback URL**. Set them both to the values below:
 
-* System dependencies
+**Homepage URL:** `http://localhost:3000`
+**Authorization callback URL:** `http://localhost:3000/users/auth/github/callback`
 
-* Configuration
+After you creat the app you'll be taken to a screen that has the `github_app_id` and the `github_app_secret` that you'll need whenever you setup the environment variables below.
 
-* Database creation
+### Env variables
+Copy `config/application.yml.sample` to `config/application.yml` and set the `github_app_id` and the `github_app_secret` to the values from the GitHub OAuth application page.
 
-* Database initialization
+### Install Gems
+To install the gems running
 
-* How to run the test suite
+`$ bundle install`
 
-* Services (job queues, cache servers, search engines, etc.)
+### Initializeing the Database
+The first time your run the app you'll have to setup the database by running
 
-* Deployment instructions
+`$ rails db:setup`
 
-* ...
+### Starting the application
+After you've set everything up you can run start the server by running
+
+`$ rails server`
+
+## Database
+This application uses SQLite
+
+## Gems
+The only gems I added are:
+```
+# Environment Variables
+gem 'figaro'
+
+# Authentication
+gem 'devise'
+gem 'omniauth-github', github: 'intridea/omniauth-github'
+gem 'omniauth-rails_csrf_protection'
+```
