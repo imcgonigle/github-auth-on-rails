@@ -4,6 +4,5 @@ Rails.application.routes.draw do
   
   root to: "home#index"
   
-  get 'home/index'
-  get 'dashboard/index'
+  get 'dashboard', to: 'dashboard#index'
 end
