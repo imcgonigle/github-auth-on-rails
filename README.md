@@ -7,9 +7,10 @@ To get the app running for the first time you'll need to create an OAuth applica
 ### Create an OAuth application in GitHub
 Go to you GitHub settings and in the side go down to developer settings. From that page you can go to the OAuth application tab and create a new OAuth app.
 
-GitHub will for your applications **Homepage URL** and a **Authorization callback URL**. Set them both to the values below:
+GitHub will for your applications **Homepage URL** and a **Authorization callback URL**. Set them to the values below:
 
 **Homepage URL:** `http://localhost:3000`
+
 **Authorization callback URL:** `http://localhost:3000/users/auth/github/callback`
 
 After you creat the app you'll be taken to a screen that has the `github_app_id` and the `github_app_secret` that you'll need whenever you setup the environment variables below.
